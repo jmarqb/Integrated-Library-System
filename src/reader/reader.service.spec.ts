@@ -165,25 +165,6 @@ describe('ReaderService', () => {
 
   describe('remove', () => {
 
-    const mockLending= {
-      
-      id: 6,
-      date: "2023-10-12T19:28:25.602Z",
-      bookISBN: "978-84-673-2441-9",
-      readerId: mockReader.id,
-      Book: {
-          id: 3,
-          name: "El Gran Marco Aurelio",
-          ISBN: "978-84-673-2441-9",
-          loaned: true,
-          readerId: mockReader.id
-      },
-      Reader: {
-          id: mockReader.id,
-          name: "reader 2"
-      }
-  
-  }
     it('should remove a reader successfully if not have lending', async () => {
       mockPrismaService.reader.findUnique.mockResolvedValue(mockReader);
       mockPrismaService.lending.findFirst.mockResolvedValue(false);
