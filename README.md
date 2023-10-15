@@ -9,7 +9,7 @@
 ## Installation
 
 ```bash
-$ git clone https://github.com/jmarqb/Integrated-Library-System.git
+$ git clone https://github.com/jmarqb/Integrated-Library-System.git --config core.autocrlf=input
 $ cd Integrated-Library-System
 $ npm install
 ```
@@ -71,7 +71,7 @@ Por ejemplo: `localhost:<port>/api/doc`
 ## Stack-Docker
 
 ```bash
-$ git clone https://github.com/jmarqb/Integrated-Library-System.git
+$ git clone https://github.com/jmarqb/Integrated-Library-System.git --config core.autocrlf=input
 $ cd Integrated-Library-System
 $ npm install
 ```
