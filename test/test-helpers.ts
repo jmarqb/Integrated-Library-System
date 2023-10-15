@@ -117,14 +117,3 @@ function computeCheckDigit(isbn12) {
   const remainder = sum % 10;
   return remainder === 0 ? '0' : (10 - remainder).toString();
 }
-
-// export async function createLending(app) {
-//     const category = await createCategory(app);
-//     const data = {
-//       'name': `product${new Date().getTime()}`,
-//       "sizes": ["XL", "l"],
-//       "gender": "unisex",
-//       "categoryId": category.createdEntity._id
-//     };
-//     return createEntity(app, '/product', data);
-// }
