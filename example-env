@@ -1,0 +1,9 @@
+
+MYSQL_ROOT_PASSWORD=test_password
+MYSQL_DATABASE=test_library
+MYSQL_USER=test_user
+MYSQL_PASSWORD=test_password
+MYSQL_PORT=3309
+PORT=3001
+
+DATABASE_URL="mysql://test_user:test_password@localhost:3309/test_library"

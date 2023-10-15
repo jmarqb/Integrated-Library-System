@@ -1,0 +1,39 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Book {
+  id        Int        @id @default(autoincrement())
+  name    String
+  ISBN      String     @unique
+  loaned  Boolean    @default(false)
+  readerId  Int?
+  reader    Reader?    @relation(fields: [readerId], references: [id])
+  lending Lending[]
+
+  @@index([readerId], map: "Book_readerId_fkey")
+}
+
+model Reader {
+  id        Int        @id @default(autoincrement())
+  name    String
+  books    Book[]
+  lending Lending[]
+}
+
+model Lending {
+  id        Int      @id @default(autoincrement())
+  date     DateTime @default(now())
+  bookISBN String
+  readerId  Int
+  Reader    Reader   @relation(fields: [readerId], references: [id])
+  Book     Book    @relation(fields: [bookISBN], references: [ISBN])
+
+  @@index([readerId], map: "Lending_readerId_fkey")
+  @@index([bookISBN], map: "Lending_bookISBN_fkey")
+}
