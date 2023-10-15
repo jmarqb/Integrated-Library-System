@@ -1,5 +1,3 @@
-import { Request } from 'express';
-
 
 export interface PaginatedResult<T> {
     items: T[];
