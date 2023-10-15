@@ -29,7 +29,20 @@ npx prisma generate
 docker-compose -f docker-compose-development-locally.yml up -d
 ```
 
-* Una vez iniciada tu instancia de mysql se procede a realizar la migracion a la bd desde la carpeta migrations de Prisma. Ejecuta:
+* Una vez iniciada tu instancia de mysql se procede a realizar la migracion a la bd desde la carpeta migrations de Prisma.
+Debes asegurarte que el usuario que estableciste en el .env tenga permisos para realizar operaciones sobre la base de datos. Puedes intentar ejecutar la migracion.
+* En caso de error puedes acceder a la terminal del contenedor mysql creado o a tu instancia sql como root y otorgar los permisos  a tu usuario especificado.
+
+Ejemplo para el caso del contenedor mysql:
+```
+CREATE USER 'test_user'@'%' IDENTIFIED BY 'test_password';
+GRANT ALL PRIVILEGES ON *.* TO 'test_user'@'%' WITH GRANT OPTION;
+FLUSH PRIVILEGES;
+```
+
+`nota:` la linea CREATE USER 'test_user'@'%' IDENTIFIED BY 'test_password'; podria arrojar el error `ERROR 1396 (HY000): Operation CREATE USER failed for 'test_user'@'% indica que el usuario test_user ya existe con el host %. Dado que ya existe, el comando CREATE USER falla, pero sigue adelante y otorga privilegios con el comando GRANT, lo que es correcto. Por lo que ya seria posible ejecutar la migracion correctamente como se describe en el siguiente paso`
+
+* Ejecutar Migracion:
 
 ```
  npx prisma migrate dev --name 20231012112830_init 
