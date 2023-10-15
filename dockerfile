@@ -9,8 +9,8 @@ COPY package*.json ./
 
 RUN npm install
 
-# Install netcat for the wait-for-it script
-RUN apt-get update && apt-get install -y netcat-openbsd
+# Install netcat and dos2unix for the wait-for-it script
+RUN apt-get update && apt-get install -y netcat-openbsd dos2unix
 
 # Copy Prisma schema
 COPY prisma/ ./prisma/
@@ -20,6 +20,9 @@ RUN npx prisma generate
 
 # Bundle the rest of app source
 COPY . .
+
+# Convert wait-for-it.sh to Unix line endings
+RUN dos2unix wait-for-it.sh
 
 # Build the application
 RUN npm run build
