@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, Query, ParseIntPipe } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Query, ParseIntPipe } from '@nestjs/common';
 import { LendingService } from './lending.service';
 import { CreateLendingDto } from './dto/create-lending.dto';
 import { PaginationDto } from '../common/dto/pagination.dto';
