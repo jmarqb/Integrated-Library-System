@@ -3,7 +3,7 @@ import { INestApplication, ValidationPipe } from '@nestjs/common';
 import * as request from 'supertest';
 import { AppModule } from './../src/app.module';
 import { CommonModule } from '../src/common/common.module';
-import { createBook, createReader, generateRandomISBN13, startContainer, stopContainer } from './test-helpers';
+import { createBook, createReader, startContainer, stopContainer } from './test-helpers';
 import { LendingService } from '../src/lending/lending.service';
 import { PrismaService } from '../src/prisma.service';
 
