@@ -1,5 +1,5 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { IsBoolean, IsISBN, IsNotEmpty, IsOptional, IsString, MinLength } from "class-validator";
+import { IsISBN, IsNotEmpty, IsString, MinLength } from "class-validator";
 
 export class CreateBookDto {
 
